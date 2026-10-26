@@ -6,7 +6,7 @@ import re
 from collections import Counter
 
 _FINAL_RE = re.compile(r"Final Answer:\s*\$?(-?[\d,]*\.?\d+)")
-_DECRYPT_RE = re.compile(r"^Decrypted:\s*(.+)$", re.MULTILINE)
+_DECRYPT_RE = re.compile(r"^Decrypted(?: Question)?:\s*(.+)$", re.MULTILINE)
 _TOKEN_RE = re.compile(r"[a-z0-9]+")
 
 

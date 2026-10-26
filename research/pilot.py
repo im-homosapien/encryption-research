@@ -10,7 +10,7 @@ from pathlib import Path
 
 from research.mocks import mock_completion, run_handwritten_checks
 from research.paths import PILOT_NOTES, PILOT_PROMPTS, PILOT_RESULTS
-from research.prompts import build_prompt
+from research.prompts import prompt_for_row
 from research.score import extract_decrypted, score_completion
 
 PILOT_N = 30
@@ -241,7 +241,7 @@ def run_pilot(records: list[dict[str, str]], dry_run: bool = False) -> list[dict
     prompts: list[dict[str, str]] = []
     for row in rows:
         for with_example in (False, True):
-            prompt = build_prompt(row, with_example)
+            prompt = prompt_for_row(row, few_shot=with_example)
             prompts.append(
                 {
                     "id": row["id"],
